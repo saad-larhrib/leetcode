@@ -1,19 +1,18 @@
 int lengthOfLastWord(char* s) {
-    int counter = 0;
-    int size = 0;
-    for(int i = 0; s[i] != '\0'; i++){
-        size++;
-    }
+    int i = 0;
+    // find length
+    while(s[i] != '\0')
+	    i++;
 
-    for(int i = size - 1; i >= 0; i--){
-        if(s[i] == ' '){
-            i--;
-        }else{
-            counter++;
-            if(s[i -1] == ' '){
-                break;
-            }
-        }
-    }
+    i--; // last character
+    
+    // skip trailing spaces
+    while(i >= 0 && s[i] == ' ')
+	    i--;
+    
+    // count last word
+    int counter = 0;
+    while(i >= 0 && s[i] != ' ')
+	    counter++;
 return counter;
 }
